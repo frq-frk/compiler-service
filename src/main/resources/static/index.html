@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Compiler API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .endpoint {
+            margin-bottom: 20px;
+        }
+        .code-block {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Code Compiler API</h1>
+    <p>Use the following endpoints to interact with the API:</p>
+
+    <div class="endpoint">
+        <h2>POST /api/code/execute</h2>
+        <p>Description: Execute code from an uploaded file.</p>
+        <p>Parameters:</p>
+        <ul>
+            <li><strong>language:</strong> The programming language (e.g., "python", "java", "cpp").</li>
+            <li><strong>file:</strong> The code file to be uploaded.</li>
+        </ul>
+        <p>Example CURL Command:</p>
+        <div class="code-block">
+            curl -X POST -F "language=python" -F "file=@path/to/file.py" http://localhost:8080/api/code/execute
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST /api/code/execute-code</h2>
+        <p>Description: Execute raw base64-encoded code.</p>
+        <p>Parameters:</p>
+        <ul>
+            <li><strong>language:</strong> The programming language (e.g., "python", "java", "cpp").</li>
+            <li><strong>code:</strong> Base64-encoded string of the code.</li>
+        </ul>
+        <p>Example CURL Command:</p>
+        <div class="code-block">
+            curl -X POST -d "language=java" -d "code=$(echo 'System.out.println(\"Hello\");' | base64)" http://localhost:8080/api/code/execute-code
+        </div>
+    </div>
+
+    <div class="endpoint">
+        <h2>POST /api/code/execute-with-input</h2>
+        <p>Description: Execute code with input.</p>
+        <p>Parameters:</p>
+        <ul>
+            <li><strong>language:</strong> The programming language (e.g., "python", "java", "cpp").</li>
+            <li><strong>code:</strong> Base64-encoded string of the code.</li>
+            <li><strong>input:</strong> Input string for the program.</li>
+        </ul>
+        <p>Example CURL Command:</p>
+        <div class="code-block">
+            curl -X POST -d "language=cpp" -d "code=$(echo '#include<iostream>\\nint main(){int x;std::cin>>x;std::cout<<x;return 0;}' | base64)" -d "input=42" http://localhost:8080/api/code/execute-with-input
+        </div>
+    </div>
+
+    <p>Test endpoint: <a href="/api/code/test">/api/code/test</a></p>
+</body>
+</html>

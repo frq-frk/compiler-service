@@ -11,7 +11,7 @@ public class CppProcessor extends GenericProcessor{
 		Process process = null;
 		String command = "";
 		
-		command = "g++ -o temp_cpp_exec temp.cpp && temp_cpp_exec";
+		command = "g++ -o temp_cpp_exec temp.cpp && ./temp_cpp_exec";
 		FileUtils.createTempFile(code, "temp.cpp");
 		process = startCommand(command);
 		

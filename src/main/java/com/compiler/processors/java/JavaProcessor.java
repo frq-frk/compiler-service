@@ -1,8 +1,6 @@
 package com.compiler.processors.java;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 
 import com.compiler.processors.GenericProcessor;
@@ -12,7 +10,6 @@ public class JavaProcessor extends GenericProcessor{
 	@Override
 	public Process getProcess(String code) throws IOException, InterruptedException {
 		ProcessBuilder processBuilder = null;
-		String command = "";
 		
 		String tempFilePath = "TempDynamicProgram.java";
 		PrintWriter writer = new PrintWriter(tempFilePath, "UTF-8");

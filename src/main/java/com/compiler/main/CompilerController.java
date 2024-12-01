@@ -1,18 +1,14 @@
 package com.compiler.main;
 
-import java.io.*;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Base64;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,7 +38,7 @@ public class CompilerController {
 
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/execute-code")
-	public ResponseEntity<String> executeRawCode(@RequestBody CodeFile requestData) {
+	public ResponseEntity<String> executeRawCode(@ModelAttribute CodeFile requestData) {
 		String language = requestData.getLanguage();
 		String code = requestData.getCode();
 		try {
@@ -59,7 +55,7 @@ public class CompilerController {
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/execute-with-input")
-	public ResponseEntity<String> executeCodeWithInput(@RequestBody CodeFileWithInput requestData) {
+	public ResponseEntity<String> executeCodeWithInput(@ModelAttribute CodeFileWithInput requestData) {
 		String language = requestData.getLanguage();
 		String code = requestData.getCode();
 		String input = requestData.getInput();
@@ -79,5 +75,4 @@ public class CompilerController {
 	public String test() {
 		return "It's working";
 	}
-
 }

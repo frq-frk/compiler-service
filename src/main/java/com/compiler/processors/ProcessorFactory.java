@@ -24,7 +24,7 @@ public class ProcessorFactory {
  
         try {
             if( className!=null) {
-                Class cls = Class.forName(className);
+                Class<?> cls = Class.forName(className);
                 processor = (GenericProcessor)cls.getDeclaredConstructor().newInstance();
             }
         } catch (Exception e) {
@@ -36,8 +36,8 @@ public class ProcessorFactory {
     
 	private static void loadProcessorMappings() {
 		ResourceBundle rb = ResourceBundle.getBundle(PROCESSOR_CONFIGURATION, Locale.getDefault());
-        for (Enumeration e = rb.getKeys(); e.hasMoreElements();) {
-            String key = (String) e.nextElement();
+        for (Enumeration<String> e = rb.getKeys(); e.hasMoreElements();) {
+            String key = e.nextElement();
             processorMappings.put(key, rb.getString(key));
         }
 	}

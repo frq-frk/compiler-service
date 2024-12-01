@@ -1,7 +1,6 @@
 package com.compiler.processors.python;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import com.compiler.file.utils.FileUtils;
 import com.compiler.processors.GenericProcessor;

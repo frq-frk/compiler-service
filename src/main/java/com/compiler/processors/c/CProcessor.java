@@ -11,7 +11,7 @@ public class CProcessor extends GenericProcessor {
 		Process process = null;
 		String command = "";
 		
-		command = "gcc -o temp_c_exec temp.c && temp_c_exec";
+		command = "gcc -o temp_c_exec temp.c && ./temp_c_exec";
 		FileUtils.createTempFile(code, "temp.c");
 		
 		process = startCommand(command);

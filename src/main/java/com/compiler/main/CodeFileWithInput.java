@@ -2,17 +2,8 @@ package com.compiler.main;
 
 import java.util.UUID;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
-@Table(name="code_file")
-@Entity
 public class CodeFileWithInput {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+
     private String id = UUID.randomUUID().toString();
 	private String code;
 	private String language;
